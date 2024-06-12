@@ -1,0 +1,5 @@
+rootProject.name = 'msa_exam_3'
+include 'common'
+include 'member'
+findProject(":common")?.name = 'common'
+findProject(":member")?.name = 'member'

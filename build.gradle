@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.ll'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+
+    group = 'com.ll'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation platform('org.junit:junit-bom:5.10.0')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+project(':member') { // 컴파일 시 multi-module-database 로딩
+    dependencies {
+        implementation project(':common')
+    }
+}
+
+
+test {
+    useJUnitPlatform()
+}
